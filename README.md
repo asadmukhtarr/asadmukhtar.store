@@ -1,10 +1,10 @@
 # asadmukhtar.store
 # we are goint to create an Ecommerce Application On MERN Stack And We Will Use Tailwind On Frontend ..
 # Plaining of course:
-# Step # 1  - HTML & CSS With Tailwind ( Frontend ) ..
-# Step # 2  - We will Convert Our Complete Frontend Into React With Sample ...
-# Step # 3  - Work On MongoDB ..
-# Step # 4  - Backend API Functionality With NodeJs And MongoDB..
+  - HTML & CSS With Tailwind ( Frontend ) ..
+  - We will Convert Our Complete Frontend Into React With Sample ...
+  - Work On MongoDB ..
+  - Backend API Functionality With NodeJs And MongoDB..
 # Plan of asadmukhtar.store 
 # Client Side
     - Home
