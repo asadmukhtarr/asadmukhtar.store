@@ -1,13 +1,13 @@
 # asadmukhtar.store
 # we are goint to create an Ecommerce Application On MERN Stack And We Will Use Tailwind On Frontend ..
 # Plaining of course:
-  - HTML & CSS With Tailwind ( Frontend ) ..
+  - HTML & CSS With Tailwind ( Frontend ) .. ( Active)
   - We will Convert Our Complete Frontend Into React With Sample ...
   - Work On MongoDB ..
   - Backend API Functionality With NodeJs And MongoDB..
 # Plan of asadmukhtar.store 
 # Client Side
-    - Home
+    - Home | index ( Developers ) | Landing Page ...
     - About
     - Contact
     - Products
@@ -35,3 +35,7 @@
     - React 
 # Basic Frontend :
     - Html + CSS With Tailwind
+# Technical Guidelines :
+    - Header & Footer Will Remian Same In Complete Project ..
+    - Three Types of CSS : Inline CSS, Internal , External
+    - We can install Tailwind CSS With Npm ( Node Package Manager ) ( Windows) ? Yarn (Mac / banto) ?? CDN  ??

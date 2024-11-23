@@ -1,0 +1,13 @@
+.asad {
+    border:1px dotted red; 
+    height: 100px;
+}
+.box {
+    height: 100px;
+    width: 100px;
+    background: red;
+    margin-top: 2%;
+}
+.box:hover {
+    background-color: yellow;
+}
