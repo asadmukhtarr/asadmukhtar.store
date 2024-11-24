@@ -1,13 +1,46 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Navbar</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <h1 class="text-3xl font-bold text-center">
-    Hello world!
-  </h1>
+<body class="bg-red-600">
+    <div class="bg-white shadow-lg">
+      <div class="max-w-7x1 mx-auto p-2 sm:p-6 lg:p-5">
+        <div class="flex justify-between h-5">
+            <div class="flex item-center">
+                <a href="#" class="text-x font-semibold text-grey-600 hover:text-red-600"> <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>  Asadmukhtar.store</a>
+            </div>
+            <div class="flex md:hidden items-center">
+                <button id="menu-btn" class="text-grey-600 hover:text-red-600">
+                  <i class="fa fa-caret-square-o-down"></i>
+                <button>
+            </div>
+            <div class="hidden md:flex space-x-4 item-center">
+              <a href="#" class="text-grey-600 hover:text-red-600"><i class="fa fa-home"></i> Home </a>
+              <a href="#" class="text-grey-600 hover:text-red-600"><i class="fa fa-info-circle"></i> About </a>
+              <a href="#" class="text-grey-600 hover:text-red-600"><i class="fa fa-list"></i> Products</a>
+              <a href="#" class="text-grey-600 hover:text-red-600"><i class="fa fa-handshake-o"></i> Contact</a>
+              <a href="#" class="text-grey-600 hover:text-red-600"><i class="fa fa-cart-plus"></i> Cart</a>
+            </div>
+            <div class="hidden md:hidden" id="mobile">
+              <a href="#" class="block px-4 py-2 text-grey-600 hover:text-red-600"><i class="fa fa-home"></i> Home </a>
+              <a href="#" class="block px-4 py-2 text-grey-600 hover:text-red-600"><i class="fa fa-info-circle"></i> About </a>
+              <a href="#" class="block px-4 py-2 text-grey-600 hover:text-red-600"><i class="fa fa-list"></i> Products</a>
+              <a href="#" class="block px-4 py-2 text-grey-600 hover:text-red-600"><i class="fa fa-handshake-o"></i> Contact</a>
+              <a href="#" class="block px-4 py-2 text-grey-600 hover:text-red-600"><i class="fa fa-cart-plus"></i> Cart</a>
+            </div>
+        </div>
+      </div>
+    </div>
+    <Script>
+        document.getElementById("menu-btn").addEventListener("click",function(){
+          const mobilemenu =document.getElementById("mobile");
+          mobilemenu.classList.toggle("hidden");
+        });
+    </Script>
 </body>
 </html>
