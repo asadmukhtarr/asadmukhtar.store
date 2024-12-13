@@ -7,5 +7,39 @@
 </head>
 <body>
     <h1>Faq</h1>
+    <input type="text" id="checker" onkeyup="getkeys(this.value)" />
+    <p id="demo"></p>
+    <button type="button" onclick="xyz()">Click Me</button>
+    <hr />
+    <label for="">Amount</label>
+    <input type="number"> <br /> <br />
+    <label for="">Select Currency</label>
+    <select name="" id="">
+        <option value="">USD Dollar</option>
+        <option value="">Yuan</option>
+        <option value="">INR</option>
+        <option value="">Dirham</option>
+        <option value="">Dinar</option>
+        <option value="">Euro</option>
+    </select>
+    <br />
+    <br />
+    Amount In pkr: <p>0</p>
+    <script>
+        function abc(){
+            alert("Hello World");
+        }
+        function xyz(val){
+            // In Javascript, Web Page ---> Event ...
+            // Element--------> Tag ..
+            // web page mai sy us tag ko pkro jis ki id checker hai ...???
+            var b = document.getElementById("checker").value;
+            alert(b);
+        }
+        function getkeys(b){
+            var b = document.getElementById("checker").value; // getting value ..
+            document.getElementById("demo").innerHTML = b; // provding value ..
+        }
+    </script>
 </body>
 </html>
