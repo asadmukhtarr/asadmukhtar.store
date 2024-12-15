@@ -98,3 +98,12 @@ function getResult(){
 function clearInp(){
   document.getElementById("calculate").value = null;
 }
+function defualt_currency_select(){
+  var select_currency = document.getElementById('currency').value;
+  var amount = document.getElementById("amount").value;
+  document.getElementById("pkr_value").value = Math.round(select_currency * amount);
+}
+function change_currency(v){
+  var amount = document.getElementById("amount").value;
+  document.getElementById("pkr_value").value = Math.round(v * amount);
+}
