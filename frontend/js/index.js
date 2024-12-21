@@ -84,26 +84,50 @@ for(let i =0; i < alumins.length; i++){
 //  document.getElementById("demo").innerHTML = alumins[i].name;
   console.log(alumins[i].name);
 }
+var saqib = "I am saqib";
 // string + string = stringstring  ...
 // 3 + 4 = 34
-function getValue(v){
-  var b = document.getElementById("calculate").value;
-  var u = b + v;
-  document.getElementById("calculate").value = u;
+function defualt_currency_select() {
+  const baseCurrencyValue = document.getElementById("currency").value;
+  const targetCurrencyValue = document.getElementById("target_currency").value;
+  const amount = document.getElementById("amount").value;
+  updateConvertedValue(baseCurrencyValue, targetCurrencyValue, amount);
 }
-function getResult(){
-  var u = document.getElementById("calculate").value;
-  document.getElementById("calculate").value = eval(u);
+
+function change_currency() {
+  const baseCurrencyValue = document.getElementById("currency").value;
+  const targetCurrencyValue = document.getElementById("target_currency").value;
+  const amount = document.getElementById("amount").value;
+  updateConvertedValue(baseCurrencyValue, targetCurrencyValue, amount);
 }
-function clearInp(){
-  document.getElementById("calculate").value = null;
+
+function change_amount(amount) {
+  const baseCurrencyValue = document.getElementById("currency").value;
+  const targetCurrencyValue = document.getElementById("target_currency").value;
+  updateConvertedValue(baseCurrencyValue, targetCurrencyValue, amount);
 }
-function defualt_currency_select(){
-  var select_currency = document.getElementById('currency').value;
-  var amount = document.getElementById("amount").value;
-  document.getElementById("pkr_value").value = Math.round(select_currency * amount);
+
+function updateConvertedValue(baseCurrencyValue, targetCurrencyValue, amount) {
+  const convertedValue = (amount * targetCurrencyValue) / baseCurrencyValue;
+  document.getElementById("pkr_value").value = Math.round(convertedValue * 100) / 100; // Rounded to 2 decimal places
 }
-function change_currency(v){
-  var amount = document.getElementById("amount").value;
-  document.getElementById("pkr_value").value = Math.round(v * amount);
+
+// Calculator functionality
+function getValue(v) {
+  const input = document.getElementById("calculate");
+  input.value = input.value + v;
+}
+
+function getResult() {
+  const input = document.getElementById("calculate");
+  try {
+    input.value = eval(input.value);
+  } catch (error) {
+    alert("Invalid calculation!");
+    input.value = "";
+  }
+}
+
+function clearInp() {
+  document.getElementById("calculate").value = "";
 }

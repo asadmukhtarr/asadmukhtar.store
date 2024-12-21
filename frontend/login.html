@@ -73,31 +73,41 @@
             </div>
              <div class="col-lg-6">
                 <table class="table table-bordered table-bordered table-hover">
-                    <tr class="bg-danger text-white">
-                        <th>
-                            <input type="text" class="form-control" id="pkr_value" disabled>
-                        </th>
-                        <th>
-                            Pakistani Rupee (PKR)
-                        </th>
-                    </tr>
                     <tr>
                         <td>
-                            <input type="text" id="amount" value="1" class="form-control">
+                          <input type="number" id="amount" onkeyup="change_amount(this.value)" value="1" class="form-control">
                         </td>
                         <td>
-                            <select name="" id="currency" onchange="change_currency(this.value)" class="form-control">
-                                <option value="289">USD</option>
-                                <option value="75.73">AED</option>
-                                <option value="38.15">Yuan</option>
-                                <option value="74.02">Riyal</option>
-                                <option value="291.64" selected>Euro</option>
-                                <option value="1.83">Yen</option>
-                                <option value="196.55">CAD</option>
-                                <option value="904.26">Kuwait Dinnar</option>
-                            </select>
+                          <select id="currency" onchange="change_currency()" class="form-control">
+                            <option value="277">USD</option>
+                            <option value="75.73">AED</option>
+                            <option value="38.15">Yuan</option>
+                            <option value="74.02">Riyal</option>
+                            <option value="291.64" selected>Euro</option>
+                            <option value="1.83">Yen</option>
+                            <option value="196.55">CAD</option>
+                            <option value="904.26">Kuwait Dinar</option>
+                          </select>
                         </td>
-                    </tr>
+                      </tr>
+                      <tr>
+                        <td>
+                          <input type="text" class="form-control" id="pkr_value" disabled>
+                        </td>
+                        <td>
+                          <select id="target_currency" onchange="change_currency()" class="form-control">
+                            <option value="277">USD</option>
+                            <option value="75.73">AED</option>
+                            <option value="38.15">Yuan</option>
+                            <option value="74.02">Riyal</option>
+                            <option value="291.64">Euro</option>
+                            <option value="1.83">Yen</option>
+                            <option value="196.55">CAD</option>
+                            <option value="904.26">Kuwait Dinar</option>
+                          </select>
+                        </td>
+                      </tr>
+                      
                 </table>
             </div>
         </div>
