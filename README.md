@@ -39,3 +39,9 @@
     - Header & Footer Will Remian Same In Complete Project ..
     - Three Types of CSS : Inline CSS, Internal , External
     - We can install Tailwind CSS With Npm ( Node Package Manager ) ( Windows) ? Yarn (Mac / banto) ?? CDN  ??
+# guidelines for react installation : 
+    - ReactJS:
+	- Installation of React:
+		Step # 1: Installatoin of nodeJS ...
+		Step # 2: Run "npx create-react-app project-name" Command In Your Required Folder ..
+		Step # 3 npm start ( If you receive Vite error then use : npm install web-vitals ) 
