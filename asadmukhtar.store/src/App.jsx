@@ -3,15 +3,20 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Products from "./components/Products";
 import Cart from "./components/Cart";
+import Header from "./components/includes/Header";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 const App = () => {
     return (
        <div>
-            <h2>Hello Main Component</h2>
+            <Header />
+            <div className="container-fluid mt-2">
             <Home />
             <About />
             <Contact />
             <Products />
             <Cart />
+            </div>
        </div>
     )
 }
