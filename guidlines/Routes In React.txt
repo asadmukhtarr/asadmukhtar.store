@@ -1,0 +1,25 @@
+Step # 1: npm install react-router-dom 
+Step # 2: Import Routes , Route In App.js
+Step # 2.1 Import BrowserRouter  In index.js and close your main component in this.
+           Example:
+		  import ReactDom from "react-dom/client"; // this is importing react dom ..
+                  import { BrowserRouter } from "react-router-dom";
+                  import Asad from "./App";
+                  const root = ReactDom.createRoot(document.getElementById("root")); // connecting index.html with react envoivement ..
+                  root.render(
+                    <BrowserRouter>
+                           <Asad />
+                    </BrowserRouter>
+                 ); // components .. 
+Step # 3: Create routes In app.js
+	  Example:
+	  <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/about" element={<About />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path="/products" element={<Products />} />
+                        <Route path="/cart" element={<Cart />} />
+                    </Routes>
+          </BrowserRouter>
+Step # 4: Add link in your header ..
