@@ -3,7 +3,7 @@ const Home = () => {
         <div>
             <div className="p-5 mb-4 bg-info text-white">
                 <div className="container-fluid py-5">
-                    <h1 className="display-5 fw-bold">Welcome to Asadmukhtar.store</h1>
+                    <h1 className="display-5 fw-bold">Welcome to <span className="badge bg-danger"> <i  className="fa fa-truck"></i> Asadmukhtar.store</span></h1>
                     <p className="fs-4">Discover the best deals on quality products today!</p>
                     <a href="/products" className="btn btn-light btn-lg">
                         Shop Now <i className="fa fa-arrow-right"></i>
