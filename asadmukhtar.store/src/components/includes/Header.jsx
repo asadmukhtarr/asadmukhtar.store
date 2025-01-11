@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-const Header = () => {
+const Header = (props) => {
     return (
         <div>
             <div className="navbar navbar-expand-lg navbar-light bg-info">
                 <div className="container-fluid">
-                    <Link to="/" className="navbar-brand"> <i className="fa fa-truck" aria-hidden="true"></i> Asadmukhtar.store</Link>
+                    <Link to="/" className="navbar-brand"> <i className="fa fa-truck" aria-hidden="true"></i> {props.brand}</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#asadmukhtar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>

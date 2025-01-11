@@ -1,12 +1,25 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 export default function About() {
+  const [name,setName] = useState("My Name is Asad");
+  const [count,setCount] = useState(0);
+  const nameHandle = () => {
+      setName("Faisal Khan");
+  }
+  let student = "Huma";
   return (
     <div className="about-page container mt-4">
+      <h2 className='mt-2 mb-2'>{name}</h2> <h3>
+        Counter Is : {count}
+      </h3>
+      <h4>Student Name : {student}</h4>
+      <button className='btn btn-danger mb-2' onClick={nameHandle}>Click For Check</button>
+      <button className='btn btn-warning mb-2 m-1' onClick={() => setCount(count +1)}>Count + </button>
+      <button className='btn btn-warning mb-2 m-1' onClick={() => setCount(count -1)}>Count -  </button> <br />
+      <input type="text" className='form-control m-2' onKeyUp={(e) =>setName(e.target.value)} />
       <div className="card shadow-sm border-0">
         <div className="card-header bg-info text-white">
           <h4 className="mb-0">
-            <i className="fa fa-info-circle"></i> About Us
+            <i className="fa fa-info-circle"></i> About Us 
           </h4>
         </div>
         <div className="card-body">

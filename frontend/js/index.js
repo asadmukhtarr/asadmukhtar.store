@@ -131,3 +131,5 @@ function getResult() {
 function clearInp() {
   document.getElementById("calculate").value = "";
 }
+const name = "Faisal Khan";
+console.log(name);

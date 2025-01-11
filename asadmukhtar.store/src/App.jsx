@@ -9,9 +9,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 const App = () => {
+    let title = "Webeducatorz";
     return (
        <div>
-            <Header />
+            <Header brand={title} />
             <div>
                     <Routes>
                         <Route path="/" element={<Home />} />
