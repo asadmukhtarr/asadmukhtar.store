@@ -10,7 +10,6 @@ const Home = () => {
                     </a>
                 </div>
             </div>
-
             <section className="features-section py-5">
                 <div className="container">
                     <h2 className="text-center mb-4">Why Shop With Us?</h2>
@@ -33,7 +32,6 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-
             <section className="products-section py-5 bg-light">
                 <div className="container">
                     <h2 className="text-center mb-4">Featured Products</h2>
