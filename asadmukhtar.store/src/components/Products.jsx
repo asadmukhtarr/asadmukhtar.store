@@ -11,6 +11,11 @@ export default function Products() {
       console.log("Getting Error In Products",error);
     }
   }
+  // const fetchproducts = () => {
+  //   fetch("https://678a5a52dd587da7ac29c71b.mockapi.io/products/products")
+  //   .then(response => response.json())
+  //   .then(data => console.log(data));
+  // }
   useEffect(function(){
     fetchproducts();
   });
