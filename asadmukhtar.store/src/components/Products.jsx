@@ -2,11 +2,13 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 export default function Products() {
   const [products,setProducts] = useState([]);
+  const [loader,setloader] = useState(false);
   const fetchproducts = async () => {
     try {
-      const response = await fetch("https://678a5a52dd587da7ac29c71b.mockapi.io/products/products");
+      const response = await fetch("https://678a5a52dd587da7ac29c71b.mockapi.io/products/products"); // axios ..
       const result   = await response.json(); 
       setProducts(result);
+      setloader(true);
     } catch(error) {
       console.log("Getting Error In Products",error);
     }
@@ -36,22 +38,38 @@ export default function Products() {
           <div className='container-fluid'>
           <div className="row mt-4">
                 {/* Product 1 */}
-                <div className="col-md-3">
-                  <div className="card">
-                    <img
-                      src={`https://loremflickr.com/cache/resized/defaultImage.small_640_480_nofilter.jpg`}
-                      alt="Product 1"
-                      className="card-img-top"
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title">Product 1</h5>
-                      <p className="card-text">$50</p>
-                      <a href="/product/1" className="btn btn-info">
-                        View Details
-                      </a>
+                { 
+                  loader ? (
+                  products.map((product) => (
+                    <div className="col-md-3 mt-1">
+                      <div className="card">
+                        <img
+                          src={product.picture}
+                          alt="Product 1"
+                          className="card-img-top"
+                        />
+                        <div className="card-body">
+                          <h5 className="card-title">{product.title}</h5>
+                          <p className="card-text">
+                            {Math.round(product.price)} Pkr <br />
+                            {product.description}
+                          </p>
+                          <a href="/product/1" className="btn btn-info">
+                            View Details
+                          </a>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
+                  ))
+                  ) : (
+                    <div>
+                      <div className="d-flex justify-content-center" >
+                        <span className='text-danger'> <i className="fa fa-spinner fa-spin"></i>  Loading...</span>
+                      </div>
+                    </div>
+                  )
+                }
+                {/* end product frontend */}
               </div>
           </div>
         </div>
