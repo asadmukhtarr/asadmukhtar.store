@@ -7,6 +7,7 @@ import Cart from "./components/Cart";
 import Header from "./components/includes/Header";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import Create from "./components/Create";
 
 const App = () => {
     let title = "Webeducatorz";
@@ -20,6 +21,7 @@ const App = () => {
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/products" element={<Products />} />
                         <Route path="/cart" element={<Cart />} />
+                        <Route path="/create-product" element={<Create />} />
                     </Routes>
             </div>
        </div>

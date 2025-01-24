@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
+import Create from './Create';
 export default function Products() {
   const [products,setProducts] = useState([]);
   const [loader,setloader] = useState(false);
@@ -36,40 +37,48 @@ export default function Products() {
             </div>
           </div>
           <div className='container-fluid'>
-          <div className="row mt-4">
-                {/* Product 1 */}
-                { 
-                  loader ? (
-                  products.map((product) => (
-                    <div className="col-md-3 mt-1">
-                      <div className="card">
-                        <img
-                          src={product.picture}
-                          alt="Product 1"
-                          className="card-img-top"
-                        />
-                        <div className="card-body">
-                          <h5 className="card-title">{product.title}</h5>
-                          <p className="card-text">
-                            {Math.round(product.price)} Pkr <br />
-                            {product.description}
-                          </p>
-                          <a href="/product/1" className="btn btn-info">
-                            View Details
-                          </a>
-                        </div>
-                      </div>
+              <div className='row'>
+                  <div className='col-lg-4'>
+                      <Create />
+                  </div>
+                  <div className='col-lg-8'>
+                    <fetchedData />
+                    <div className="row mt-4">
+                      {/* Product fetched */}
+                      { 
+                        loader ? (
+                        products.map((product) => (
+                          <div className="col-md-6 mt-1">
+                            <div className="card">
+                              <img
+                                src={product.picture}
+                                alt="Product 1"
+                                className="card-img-top"
+                              />
+                              <div className="card-body">
+                                <h5 className="card-title">{product.title}</h5>
+                                <p className="card-text">
+                                  {Math.round(product.price)} Pkr <br />
+                                  {product.description}
+                                </p>
+                                <a href="/product/1" className="btn btn-info">
+                                  View Details
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        ))
+                        ) : (
+                          <div>
+                            <div className="d-flex justify-content-center" >
+                              <span className='text-danger'> <i className="fa fa-spinner fa-spin"></i>  Loading...</span>
+                            </div>
+                          </div>
+                        )
+                      }
+                      {/* end product frontend */}
                     </div>
-                  ))
-                  ) : (
-                    <div>
-                      <div className="d-flex justify-content-center" >
-                        <span className='text-danger'> <i className="fa fa-spinner fa-spin"></i>  Loading...</span>
-                      </div>
-                    </div>
-                  )
-                }
-                {/* end product frontend */}
+                  </div>
               </div>
           </div>
         </div>
