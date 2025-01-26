@@ -3,10 +3,21 @@ const Create = () => {
     const [title,setTitle ] = useState("");
     const [description,setDescription] = useState("");
     const [price,setPrice] = useState("");
-    const [image,setImage] = useState("");
     const formHandle = (event) => {
         event.preventDefault();
-        console.log(title);
+        const student = {
+            title,
+            description,
+            price
+        }
+        fetch("https://678a5a52dd587da7ac29c71b.mockapi.io/products/products",{
+            method:"POST",
+            headers: {
+                "Content-Type" : "applicaiton/json",
+            },
+            body:JSON.stringify(student),
+        })
+        console.log("Data saved succesfully",student);
     }
     return (
         <div>
@@ -30,10 +41,6 @@ const Create = () => {
                                     <div className="form-group">
                                         <label> Price {price} </label>
                                         <input  type="number" onChange={(e) => setPrice(e.target.value)} className="form-control" />
-                                    </div>
-                                    <div className="form-group mt-1">
-                                        <label> Thumbnail {image} </label> <br /> <br />
-                                        <input  type="file" onChange={(e) => setImage(e.target.value)} />
                                     </div>
                                 </div>
                                 <div className="card-footer">

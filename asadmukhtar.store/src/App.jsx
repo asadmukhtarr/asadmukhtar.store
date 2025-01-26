@@ -8,9 +8,10 @@ import Header from "./components/includes/Header";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Create from "./components/Create";
+import Product from "./components/Product";
 
 const App = () => {
-    let title = "Webeducatorz";
+    let title = "Asad Mukhtar";
     return (
        <div>
             <Header brand={title} />
@@ -22,6 +23,7 @@ const App = () => {
                         <Route path="/products" element={<Products />} />
                         <Route path="/cart" element={<Cart />} />
                         <Route path="/create-product" element={<Create />} />
+                        <Route path="/product/:id" element={<Product />}></Route>
                     </Routes>
             </div>
        </div>

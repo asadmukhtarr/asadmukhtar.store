@@ -1,18 +1,33 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import Create from './Create';
+import { useNavigate } from 'react-router-dom';
 export default function Products() {
   const [products,setProducts] = useState([]);
   const [loader,setloader] = useState(false);
+  const navigate = useNavigate();
   const fetchproducts = async () => {
     try {
       const response = await fetch("https://678a5a52dd587da7ac29c71b.mockapi.io/products/products"); // axios ..
       const result   = await response.json(); 
-      setProducts(result);
+      setProducts(result.reverse());
       setloader(true);
     } catch(error) {
       console.log("Getting Error In Products",error);
     }
+  }
+  const deleteData = (id) => {
+    fetch("https://678a5a52dd587da7ac29c71b.mockapi.io/products/products/"+id,{
+      method:"Delete"
+    })
+    .then(response => response.json())
+    .then(data => console.log(data));
+    fetchproducts();
+  }
+  const singleProduct = (id) => {
+    navigate(`/product/${id}`);
+    // navigate('/product/'+id);
+//    console.log('single product for',id);
   }
   // const fetchproducts = () => {
   //   fetch("https://678a5a52dd587da7ac29c71b.mockapi.io/products/products")
@@ -42,28 +57,25 @@ export default function Products() {
                       <Create />
                   </div>
                   <div className='col-lg-8'>
-                    <fetchedData />
                     <div className="row mt-4">
                       {/* Product fetched */}
                       { 
                         loader ? (
                         products.map((product) => (
-                          <div className="col-md-6 mt-1">
+                          <div key={product.id} className="col-md-6 mt-1">
                             <div className="card">
-                              <img
-                                src={product.picture}
-                                alt="Product 1"
-                                className="card-img-top"
-                              />
                               <div className="card-body">
                                 <h5 className="card-title">{product.title}</h5>
                                 <p className="card-text">
                                   {Math.round(product.price)} Pkr <br />
                                   {product.description}
                                 </p>
-                                <a href="/product/1" className="btn btn-info">
+                                <button onClick={() => singleProduct (product.id)} className="btn btn-info me-2">
                                   View Details
-                                </a>
+                                </button>
+                                <button type="button" onClick={() => deleteData(product.id)} className="btn btn-danger">
+                                  Delete
+                                </button>
                               </div>
                             </div>
                           </div>
