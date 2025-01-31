@@ -17,17 +17,22 @@ export default function Products() {
     }
   }
   const deleteData = (id) => {
-    fetch("https://678a5a52dd587da7ac29c71b.mockapi.io/products/products/"+id,{
-      method:"Delete"
-    })
-    .then(response => response.json())
-    .then(data => console.log(data));
-    fetchproducts();
+    if(window.confirm("Are you sure?")){
+      fetch("https://678a5a52dd587da7ac29c71b.mockapi.io/products/products/"+id,{
+        method:"Delete"
+      })
+      .then(response => response.json())
+      .then(data => console.log(data));
+      fetchproducts();
+    }
   }
   const singleProduct = (id) => {
     navigate(`/product/${id}`);
     // navigate('/product/'+id);
 //    console.log('single product for',id);
+  }
+  const updateProduct = (id) => {
+    navigate(`/update/${id}`);
   }
   // const fetchproducts = () => {
   //   fetch("https://678a5a52dd587da7ac29c71b.mockapi.io/products/products")
@@ -70,10 +75,13 @@ export default function Products() {
                                   {Math.round(product.price)} Pkr <br />
                                   {product.description}
                                 </p>
-                                <button onClick={() => singleProduct (product.id)} className="btn btn-info me-2">
+                                <button onClick={() => singleProduct (product.id)} className="btn btn-info btn-sm me-2">
                                   View Details
                                 </button>
-                                <button type="button" onClick={() => deleteData(product.id)} className="btn btn-danger">
+                                <button onClick={() => updateProduct (product.id)} className="btn btn-success btn-sm me-2">
+                                  Edit
+                                </button>
+                                <button type="button" onClick={() => deleteData(product.id)} className="btn btn-sm btn-danger">
                                   Delete
                                 </button>
                               </div>
