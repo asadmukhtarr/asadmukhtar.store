@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
+import Swal from "sweetalert2";
 const Update = () => {
     const { id } = useParams();
     const [title, setTitle] = useState("");
@@ -13,7 +13,7 @@ const Update = () => {
     useEffect(() => {
          const fetchProduct = async () => {
             try {
-                const response = await fetch(`https://678a5a52dd587da7ac29c71b.mockapi.io/products/products/${id}`);
+                const response = await fetch(`https://679e2303946b0e23c062a743.mockapi.io/products/products/${id}`);
                 const data = await response.json();
                 setTitle(data.title);
                 setDescription(data.description);
@@ -26,11 +26,39 @@ const Update = () => {
     }, [id]);
 
     // Handle Form Submission
-    const formHandle = (e) => {
-        e.preventDefault();
-        console.log("Form Submitted:", { title, description, price });
-        // Add your update API call here
+   const formHandle = async (e) => {
+    e.preventDefault();
+    const student = {
+        title,
+        description,
+        price
     };
+
+    try {
+        const response = await fetch(`https://679e2303946b0e23c062a743.mockapi.io/products/products/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json", // Fix typo here
+            },
+            body: JSON.stringify(student),
+        });
+
+        if (!response.ok) {
+            throw new Error(`Failed to update: ${response.statusText}`);
+        }
+         Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Product Update Succesfully",
+            showConfirmButton: false,
+            timer: 1500
+        });
+        const result = await response.json();
+        console.log("Data Updated Successfully", result);
+    } catch (error) {
+        console.error("Error updating product:", error);
+    }
+};
 
     return (
         <div>

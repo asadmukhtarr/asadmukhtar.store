@@ -8,7 +8,7 @@ const Product = () => {
     useEffect(() => {
         const fetchSingleProduct = async () => {
             try {
-                const response = await fetch(`https://678a5a52dd587da7ac29c71b.mockapi.io/products/products/${id}`);
+                const response = await fetch(`https://679e2303946b0e23c062a743.mockapi.io/products/products/${id}`);
                 const data = await response.json();
                 setSingle(data);
             } catch (error) {

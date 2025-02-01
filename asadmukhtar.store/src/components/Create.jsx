@@ -1,57 +1,92 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
 const Create = () => {
-    const [title,setTitle ] = useState("");
-    const [description,setDescription] = useState("");
-    const [price,setPrice] = useState("");
-    const formHandle = (event) => {
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [price, setPrice] = useState("");
+
+    const formHandle = async (event) => {
         event.preventDefault();
-        const student = {
-            title,
-            description,
-            price
+
+        const product = { title, description, price };
+
+        try {
+            const response = await fetch("https://679e2303946b0e23c062a743.mockapi.io/products/products", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json", // Fixed typo
+                },
+                body: JSON.stringify(product),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to save: ${response.statusText}`);
+            }
+
+            const result = await response.json();
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Product Created Succesfully",
+                showConfirmButton: false,
+                timer: 1500
+              });
+            console.log("Data saved successfully", result);
+
+            // Reset form after successful submission
+            setTitle("");
+            setDescription("");
+            setPrice("");
+        } catch (error) {
+            console.error("Error saving product:", error);
         }
-        fetch("https://678a5a52dd587da7ac29c71b.mockapi.io/products/products",{
-            method:"POST",
-            headers: {
-                "Content-Type" : "applicaiton/json",
-            },
-            body:JSON.stringify(student),
-        })
-        console.log("Data saved succesfully",student);
-    }
+    };
+
     return (
-        <div>
-            <div className="container mt-3">
-                <div>
-                    <div>
-                        <form onSubmit={formHandle} encType="multipart/form-data">
-                            <div className="card">
-                                <div className="card-header">
-                                    <i className="fa fa-plus-circle"></i> Create New Product
-                                </div>
-                                <div className="card-body">
-                                    <div className="form-group">
-                                        <label> Title {title} </label>
-                                        <input type="text" className="form-control" onChange={(e) => setTitle(e.target.value)} />
-                                    </div>
-                                    <div className="form-group">
-                                        <label> Description {description} </label>
-                                        <textarea className="form-control" onChange={(e) => setDescription(e.target.value)} rows="5"></textarea>
-                                    </div>
-                                    <div className="form-group">
-                                        <label> Price {price} </label>
-                                        <input  type="number" onChange={(e) => setPrice(e.target.value)} className="form-control" />
-                                    </div>
-                                </div>
-                                <div className="card-footer">
-                                    <button type="submit" className="btn btn-danger btn-sm float-end"> <i className="fa fa-plus-circle"></i> Save</button>
-                                </div>
-                            </div>
-                        </form>
+        <div className="container mt-3">
+            <form onSubmit={formHandle} encType="multipart/form-data">
+                <div className="card">
+                    <div className="card-header">
+                        <i className="fa fa-plus-circle"></i> Create New Product
+                    </div>
+                    <div className="card-body">
+                        <div className="form-group">
+                            <label>Title</label>
+                            <input 
+                                type="text" 
+                                className="form-control" 
+                                value={title} 
+                                onChange={(e) => setTitle(e.target.value)} 
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>Description</label>
+                            <textarea 
+                                className="form-control" 
+                                value={description} 
+                                onChange={(e) => setDescription(e.target.value)} 
+                                rows="5"
+                            ></textarea>
+                        </div>
+                        <div className="form-group">
+                            <label>Price</label>
+                            <input  
+                                type="number" 
+                                className="form-control" 
+                                value={price} 
+                                onChange={(e) => setPrice(e.target.value)} 
+                            />
+                        </div>
+                    </div>
+                    <div className="card-footer">
+                        <button type="submit" className="btn btn-danger btn-sm float-end">
+                            <i className="fa fa-plus-circle"></i> Save
+                        </button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
-    )
-}
+    );
+};
+
 export default Create;
