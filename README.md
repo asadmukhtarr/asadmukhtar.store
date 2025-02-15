@@ -44,4 +44,15 @@
 	- Installation of React:
 		Step # 1: Installatoin of nodeJS ...
 		Step # 2: Run "npx create-react-app project-name" Command In Your Required Folder ..
-		Step # 3 npm start ( If you receive Vite error then use : npm install web-vitals ) 
+		Step # 3 npm start ( If you receive Vite error then use : npm install web-vitals )
+    - Database: A database is a structured collection of data that is stored    electronically. 
+            - Relational databases : SQL , Mysql .. ( Rows , Colmns) ..
+            - NoSQL databases :  Unstructured , Un relation  , OOD
+            - Object-oriented databases
+            - Cloud databases
+            - Distributed databases
+# Example For Database ...
+    - For Example: Linkdn:
+                   - User_profile (id , name , email , what's app , Age , Gender)
+                   - Education (id , degree name , description , starting date , ending date , user_profile_id) ..
+                   - Experience ( id , company name , designation , starting , status , end_date , user_profile_id) ...

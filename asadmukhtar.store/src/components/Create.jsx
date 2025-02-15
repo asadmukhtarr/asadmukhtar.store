@@ -11,10 +11,11 @@ const Create = () => {
         const product = { title, description, price };
 
         try {
-            const response = await fetch("https://679e2303946b0e23c062a743.mockapi.io/products/products", {
+            const response = await fetch("http://localhost:8000/api/products/save", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json", // Fixed typo
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
                 },
                 body: JSON.stringify(product),
             });
