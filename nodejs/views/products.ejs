@@ -21,7 +21,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">Description</label>
-                            <textarea name="description" name="description" rows="10" stye="resize:none;" id="" class="form-control"></textarea>
+                            <textarea name="description" rows="10" stye="resize:none;" id="" class="form-control"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="">Price</label>
@@ -41,48 +41,25 @@
                         <thead class="table-dark">
                             <tr>
                                 <th>#</th>
-                                <th>Product Name</th>
-                                <th>Category</th>
+                                <th>Product Title</th>
+                                <th>Description</th>
                                 <th>Price</th>
-                                <th>Stock Status</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <% products.forEach(function(product){ %>
                             <tr>
                                 <td>1</td>
-                                <td>Smartphone X</td>
-                                <td>Electronics</td>
-                                <td>$699</td>
-                                <td class="text-success">In Stock</td>
+                                <td><%= product.title %></td>
+                                <td><%= product.description %></td>
+                                <td><%= product.price %></td>
+                                <td >
+                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                    <button class="btn btn-success btn-sm">Edit</button>
+                                </td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Wireless Headphones</td>
-                                <td>Accessories</td>
-                                <td>$199</td>
-                                <td class="text-danger">Out of Stock</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Gaming Laptop</td>
-                                <td>Computers</td>
-                                <td>$1,499</td>
-                                <td class="text-success">In Stock</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Smartwatch Z</td>
-                                <td>Wearables</td>
-                                <td>$249</td>
-                                <td class="text-warning">Limited Stock</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Bluetooth Speaker</td>
-                                <td>Audio</td>
-                                <td>$129</td>
-                                <td class="text-success">In Stock</td>
-                            </tr>
+                            <% }) %>
                         </tbody>
                     </table>
                 </div>
