@@ -1,6 +1,6 @@
 const express = require('express'); // import ..
 const app = express(); // initialized ..
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 const path = require('path');
 const bodyparser = require("body-parser"); // form handling ...
 const url = "mongodb://localhost:27017";
@@ -40,6 +40,17 @@ app.get('/products',async (req,res) => {
     }
     //res.render('products');
 });
+app.get('/delete/:id',async (req,res) => {
+    const id = req.params.id;
+    try {
+        const db = await connectDB(); // Get the database instance
+        const collection = db.collection("products"); // Collection name ..
+        collection.deleteOne({_id:new ObjectId(id)});
+        res.redirect('/products');
+    } catch(error){ 
+        console.log('Cant delete Product',error)
+    }
+});
 app.post('/save', async (req,res) =>{
     const {title,description,price} = req.body;
     const product = {
@@ -56,6 +67,39 @@ app.post('/save', async (req,res) =>{
     } catch(error){
         console.log("Cant Insert Data Into MongoDB",error);
     }
+});
+app.get('/edit/:id',async(req,res) => {
+    const id = req.params.id;
+    try {
+        const db = await connectDB(); // Get the database instance
+        const collection = db.collection("products"); // Collection name
+        const product = await collection.findOne({_id:new ObjectId(id)});
+        res.render('edit',{product});
+
+    } catch(error){
+        console.log('cant run edit file',error);
+    }
+});
+app.get('/update/:id', async (req,res) => {
+    const id = req.params.id;
+    const {title,description,price} = req.body;
+    const product = {
+        title,
+        description,
+        price
+    }
+    try {
+        const db = await connectDB(); // Get the database instance
+        const collection = db.collection("products"); // Collection name ..
+        collection.updateOne(
+            {_id:new ObjectId(id)},
+            {$set:product}
+        );
+        res.redirect('/products');
+    } catch(error){
+        console.log('Cant update data',error);
+    }
+
 });
 app.get('/contact',(req,res)=> {
     res.render('contact');
