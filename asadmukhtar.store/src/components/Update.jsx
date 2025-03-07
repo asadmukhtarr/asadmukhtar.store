@@ -13,7 +13,7 @@ const Update = () => {
     useEffect(() => {
          const fetchProduct = async () => {
             try {
-                const response = await fetch(`https://679e2303946b0e23c062a743.mockapi.io/products/products/${id}`);
+                const response = await fetch(`http://localhost:3030/api/product/edit/${id}`);
                 const data = await response.json();
                 setTitle(data.title);
                 setDescription(data.description);

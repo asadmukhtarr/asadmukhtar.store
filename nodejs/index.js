@@ -1,4 +1,5 @@
 const express = require('express'); // import ..
+const cors = require('cors'); // for allow api frontend request ..
 const app = express(); // initialized ..
 const { MongoClient, ObjectId } = require('mongodb');
 const path = require('path');
@@ -21,6 +22,7 @@ async function connectDB(){
 // response is for send output ...
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'));
+app.use(cors({ origin: "http://localhost:3000" })); // Allow frontend requests
 app.use(bodyparser.urlencoded(extended=true)); // initialized ...
 app.get('/',(req,res)=>{
     res.render('home');
@@ -39,6 +41,64 @@ app.get('/products',async (req,res) => {
         console.log("Error is",error);
     }
     //res.render('products');
+});
+app.get('/api/products',async(req,res) => {
+    try {
+        const db = await connectDB(); // Get the database instance
+        const collection = db.collection("products"); // Collection name
+        const products = await collection.find().toArray();
+        res.status(200).json(products);
+    } catch(error){
+        console.log("Error is",error);
+    }
+});
+app.get('/api/product/:id',async (req,res) => {
+    const id = req.params.id;
+    try {
+        const db = await connectDB(); // Get the database instance
+        const collection = db.collection("products"); // Collection name ..
+        const product = await collection.findOne({_id:new ObjectId(id)});
+        if (!product) {
+            return res.status(404).json({ message: "Product not found" });
+        }
+        res.status(200).json(product);
+    } catch(error){ 
+        console.log('Cant get Product',error)
+    }
+
+});
+app.get('api/product/edit/:id',async(req,res) => {
+    const id = req.params.id;
+    try {
+        const db = await connectDB(); // Get the database instance
+        const collection = db.collection("products"); // Collection name
+        const product = await collection.findOne({_id:new ObjectId(id)});
+        res.status(200).json(product);
+
+    } catch(error){
+        console.log('cant run edit file',error);
+    }
+});
+app.post('api/products/update/:id', async (req,res) => {
+    const id = req.params.id;
+    const {title,description,price} = req.body;
+    const product = {
+        title,
+        description,
+        price
+    }
+    try {
+        const db = await connectDB(); // Get the database instance
+        const collection = db.collection("products"); // Collection name ..
+        collection.updateOne(
+            {_id:new ObjectId(id)},
+            {$set:product}
+        );
+        res.status(200).json({message:"Data Update Succesfully"});
+    } catch(error){
+        console.log('Cant update data',error);
+    }
+
 });
 app.get('/delete/:id',async (req,res) => {
     const id = req.params.id;

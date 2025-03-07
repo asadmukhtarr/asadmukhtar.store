@@ -11,9 +11,10 @@ export default function Products() {
   // Fetch Products from API
   const fetchProducts = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/products");
+      const response = await fetch("http://localhost:3030/api/products");
       const result = await response.json();
       setProducts(result.reverse());
+      console.log(Products);
     } catch (error) {
       console.error("Error fetching products:", error);
     } finally {
@@ -92,13 +93,13 @@ export default function Products() {
                             {Math.round(product.price)} Pkr <br />
                             {product.description}
                           </p>
-                          <button onClick={() => singleProduct(product.id)} className="btn btn-info btn-sm me-2">
+                          <button onClick={() => singleProduct(product._id)} className="btn btn-info btn-sm me-2">
                             View Details
                           </button>
-                          <button onClick={() => updateProduct(product.id)} className="btn btn-success btn-sm me-2">
+                          <button onClick={() => updateProduct(product._id)} className="btn btn-success btn-sm me-2">
                             Edit
                           </button>
-                          <button type="button" onClick={() => deleteData(product.id)} className="btn btn-sm btn-danger">
+                          <button type="button" onClick={() => deleteData(product._id)} className="btn btn-sm btn-danger">
                             Delete
                           </button>
                         </div>
